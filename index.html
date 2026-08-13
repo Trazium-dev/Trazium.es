@@ -1,1660 +1,2250 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TRAZIUM | Modelamos precisión, construimos confianza</title>
-
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root{
-    --blue:#075be5;
-    --blue-dark:#0048c7;
-    --navy:#061326;
-    --dark:#081321;
-    --text:#101820;
-    --gray:#66717f;
-    --light:#f6f8fb;
-    --line:#dce2e9;
-    --white:#ffffff;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Inter',Arial,sans-serif;
-    color:var(--text);
-    background:#fff;
-    overflow-x:hidden;
-}
-
-img{
-    max-width:100%;
-    display:block;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
-
-/* =====================================================
-   BOTONES
-===================================================== */
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    background:var(--blue);
-    color:white;
-    padding:14px 23px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.04em;
-    border:1px solid var(--blue);
-    transition:.25s ease;
-    cursor:pointer;
-}
-
-.btn:hover{
-    background:var(--blue-dark);
-    transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(7,91,229,.18);
-}
-
-.btn-outline{
-    background:white;
-    color:var(--blue);
-    border-color:var(--blue);
-}
-
-.btn-outline:hover{
-    color:white;
-}
-
-.arrow{
-    font-size:15px;
-}
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    height:94px;
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid #e3e7ec;
-}
-
-.nav{
-    max-width:1440px;
-    height:100%;
-    margin:auto;
-    padding:0 42px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-}
-
-/* LOGO SUPERIOR MÁS GRANDE */
-
-.logo-top{
-    width:205px;
-    height:70px;
-    object-fit:contain;
-    object-position:left center;
-    flex-shrink:0;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:38px;
-    flex:1;
-}
-
-.nav-links a{
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:.08em;
-    transition:.2s;
-}
-
-.nav-links a:hover{
-    color:var(--blue);
-}
-
-.header-button{
-    white-space:nowrap;
-}
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-    min-height:650px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    background:
-        linear-gradient(90deg,
-        rgba(255,255,255,.98) 0%,
-        rgba(255,255,255,.90) 35%,
-        rgba(255,255,255,.15) 75%,
-        rgba(255,255,255,.05) 100%),
-        url("fondo pagina.png") center center/cover no-repeat;
-}
-
-.hero-inner{
-    width:100%;
-    max-width:1440px;
-    margin:auto;
-    padding:80px 70px;
-}
-
-.hero-content{
-    width:48%;
-    position:relative;
-    z-index:2;
-}
-
-.eyebrow{
-    color:var(--blue);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.13em;
-    margin-bottom:18px;
-    text-transform:uppercase;
-}
-
-.hero h1{
-    font-family:'Barlow Condensed',Arial,sans-serif;
-    font-size:76px;
-    line-height:.88;
-    text-transform:uppercase;
-    font-weight:800;
-    letter-spacing:-.025em;
-    margin-bottom:28px;
-    max-width:650px;
-}
-
-.hero h1 span{
-    color:var(--blue);
-}
-
-.hero-description{
-    color:#626e7b;
-    font-size:15px;
-    line-height:1.75;
-    max-width:510px;
-    margin-bottom:30px;
-}
-
-/* =====================================================
-   A MEDIDA
-===================================================== */
-
-.services{
-    padding:80px 30px;
-    background:#fff;
-}
-
-.services-grid{
-    max-width:1380px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1.05fr repeat(4,1fr);
-    border:1px solid var(--line);
-}
-
-.service-intro{
-    background:var(--navy);
-    color:white;
-    padding:48px 36px;
-    min-height:390px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.service-intro .small-title{
-    color:#2780ff;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.12em;
-    margin-bottom:14px;
-}
-
-.service-intro h2{
-    font-family:'Barlow Condensed';
-    font-size:44px;
-    line-height:.95;
-    margin-bottom:20px;
-}
-
-.service-intro p{
-    color:#c8d0dc;
-    font-size:13px;
-    line-height:1.7;
-}
-
-.service-card{
-    min-height:390px;
-    padding:32px 25px 25px;
-    border-left:1px solid var(--line);
-    display:flex;
-    flex-direction:column;
-    position:relative;
-    transition:.25s ease;
-    background:white;
-}
-
-.service-card:hover{
-    background:#fafcff;
-}
-
-.service-number{
-    color:var(--blue);
-    font-family:'Barlow Condensed';
-    font-size:34px;
-    font-weight:700;
-    margin-bottom:4px;
-}
-
-.service-card h3{
-    font-family:'Barlow Condensed';
-    font-size:27px;
-    text-transform:uppercase;
-    margin-bottom:16px;
-}
-
-.service-image{
-    width:100%;
-    height:155px;
-    object-fit:contain;
-    object-position:center;
-    margin-bottom:18px;
-}
-
-.service-card p{
-    color:#65717d;
-    font-size:11px;
-    line-height:1.6;
-    min-height:52px;
-}
-
-.service-card .explore{
-    margin-top:auto;
-    color:var(--text);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.05em;
-    text-transform:uppercase;
-    padding-top:18px;
-}
-
-.service-card .explore:hover{
-    color:var(--blue);
-}
-
-/* =====================================================
-   SECCIONES DE SERVICIO / TEXTOS
-===================================================== */
-
-.service-detail{
-    display:none;
-    padding:90px 30px;
-    background:#f6f8fb;
-    border-top:1px solid var(--line);
-}
-
-.service-detail:target{
-    display:block;
-}
-
-.detail-inner{
-    max-width:1100px;
-    margin:auto;
-}
-
-.detail-label{
-    color:var(--blue);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    margin-bottom:15px;
-}
-
-.detail-title{
-    font-family:'Barlow Condensed';
-    font-size:65px;
-    text-transform:uppercase;
-    line-height:.9;
-    margin-bottom:25px;
-}
-
-.detail-text{
-    max-width:800px;
-    color:#5f6b77;
-    font-size:16px;
-    line-height:1.9;
-}
-
-.detail-text p{
-    margin-bottom:18px;
-}
-
-.back{
-    margin-top:30px;
-}
-
-/* =====================================================
-   MODELO AL PLANO
-===================================================== */
-
-.workflow{
-    background:#f7f9fc;
-    padding:90px 30px;
-}
-
-.workflow-inner{
-    max-width:1380px;
-    margin:auto;
-}
-
-.workflow-header{
-    max-width:450px;
-    margin-bottom:50px;
-}
-
-.workflow-header h2{
-    font-family:'Barlow Condensed';
-    font-size:66px;
-    line-height:.9;
-    text-transform:uppercase;
-}
-
-.workflow-header h2 span{
-    color:var(--blue);
-}
-
-.workflow-header p{
-    color:#66717e;
-    line-height:1.7;
-    margin-top:18px;
-}
-
-.workflow-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
-}
-
-.workflow-card{
-    background:white;
-    border:1px solid var(--line);
-    padding:0 0 28px;
-    overflow:hidden;
-}
-
-.workflow-img{
-    width:100%;
-    height:260px;
-    object-fit:contain;
-    object-position:center;
-    background:white;
-    padding:15px;
-}
-
-.workflow-card h3{
-    font-family:'Barlow Condensed';
-    font-size:30px;
-    text-transform:uppercase;
-    padding:20px 25px 8px;
-}
-
-.workflow-card p{
-    color:#6c7783;
-    font-size:13px;
-    line-height:1.6;
-    padding:0 25px;
-}
-
-/* =====================================================
-   PROYECTOS
-===================================================== */
-
-.projects{
-    padding:95px 30px;
-    background:white;
-}
-
-.projects-inner{
-    max-width:1380px;
-    margin:auto;
-}
-
-.projects-header{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-    margin-bottom:35px;
-}
-
-.projects-header h2{
-    font-family:'Barlow Condensed';
-    font-size:65px;
-    line-height:.9;
-    text-transform:uppercase;
-}
-
-.projects-header .label{
-    color:#111;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.12em;
-}
-
-.project-main{
-    display:grid;
-    grid-template-columns:290px 1fr;
-    min-height:500px;
-    border:1px solid var(--line);
-}
-
-.project-info{
-    padding:45px 35px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.project-label{
-    color:#8a96a3;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.1em;
-    margin-bottom:15px;
-}
-
-.project-info h3{
-    font-family:'Barlow Condensed';
-    font-size:48px;
-    line-height:.9;
-    text-transform:uppercase;
-    margin-bottom:25px;
-}
-
-.project-info p{
-    font-size:12px;
-    color:#626e7b;
-    line-height:1.8;
-}
-
-.project-image{
-    min-height:500px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    background:#f3f5f7;
-}
-
-.project-image img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    object-position:center;
-    padding:0;
-}
-
-/* =====================================================
-   FRANJA AZUL CONTACTO
-===================================================== */
-
-.contact-banner{
-    background:var(--navy);
-    color:white;
-    padding:65px 30px;
-}
-
-.contact-inner{
-    max-width:1380px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:240px 1fr 430px;
-    align-items:center;
-    gap:50px;
-}
-
-/* LOGO 2 - ALINEADO CON TEXTO */
-
-.logo-banner{
-    width:210px;
-    max-height:90px;
-    object-fit:contain;
-    object-position:center;
-}
-
-.contact-title .mini{
-    color:#287eff;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.15em;
-    margin-bottom:12px;
-}
-
-.contact-title h2{
-    font-family:'Barlow Condensed';
-    font-size:48px;
-    line-height:.9;
-    text-transform:uppercase;
-}
-
-.contact-title h2 span{
-    color:var(--blue);
-}
-
-/* BOTONES CONTACTO */
-
-.contact-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.contact-pill{
-    min-height:62px;
-    border:1px solid rgba(255,255,255,.4);
-    border-radius:999px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:10px 22px;
-    transition:.25s ease;
-    background:rgba(255,255,255,.025);
-}
-
-.contact-pill:hover{
-    border-color:#fff;
-    background:rgba(255,255,255,.08);
-    transform:translateY(-2px);
-}
-
-.contact-icon{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-}
-
-.whatsapp-icon{
-    background:#25D366;
-}
-
-.mail-icon{
-    background:var(--blue);
-}
-
-.contact-pill-text{
-    display:flex;
-    flex-direction:column;
-    gap:3px;
-}
-
-.contact-pill-text small{
-    color:#9da8b5;
-    font-size:8px;
-    font-weight:800;
-    letter-spacing:.13em;
-}
-
-.contact-pill-text strong{
-    font-size:13px;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    padding:65px 30px 25px;
-    background:white;
-}
-
-.footer-inner{
-    max-width:1380px;
-    margin:auto;
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:1.4fr repeat(3,1fr) 1fr;
-    gap:45px;
-    padding-bottom:45px;
-    border-bottom:1px solid var(--line);
-}
-
-/* LOGO 3 MUCHO MÁS GRANDE */
-
-.footer-logo{
-    width:235px;
-    height:145px;
-    object-fit:contain;
-    object-position:left center;
-    margin-bottom:20px;
-}
-
-.footer-description{
-    max-width:280px;
-    color:#68737e;
-    font-size:12px;
-    line-height:1.7;
-}
-
-.footer-column h4{
-    font-size:10px;
-    letter-spacing:.12em;
-    margin-bottom:20px;
-}
-
-.footer-column a{
-    display:block;
-    color:#697480;
-    font-size:11px;
-    margin-bottom:12px;
-}
-
-.footer-column a:hover{
-    color:var(--blue);
-}
-
-.socials{
-    display:flex;
-    gap:10px;
-}
-
-.social{
-    width:38px;
-    height:38px;
-    border:1px solid var(--line);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-    font-weight:800;
-}
-
-.social:hover{
-    border-color:var(--blue);
-    color:var(--blue);
-}
-
-.footer-bottom{
-    padding-top:20px;
-    display:flex;
-    justify-content:space-between;
-    color:#87919c;
-    font-size:10px;
-}
-
-.footer-slogan{
-    color:#202a35;
-    font-weight:800;
-    letter-spacing:.1em;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:1100px){
-
-    .nav{
-        padding:0 25px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TRAZIUM | Modelamos precisión. Construimos confianza.</title>
+
+  <meta
+    name="description"
+    content="TRAZIUM — Modelado BIM, planimetría y reformas. Precisión técnica para proyectos de arquitectura, estructuras e instalaciones."
+  >
+
+  <style>
+    /* =========================================================
+       TRAZIUM
+       Diseño corporativo - Arquitectura / BIM
+       ========================================================= */
+
+    :root {
+      --blue: #075ee8;
+      --blue-dark: #0348b7;
+      --navy: #061321;
+      --navy-2: #0a1a2c;
+      --black: #07111d;
+      --text: #101b28;
+      --muted: #657384;
+      --line: #dfe6ee;
+      --light: #f5f8fb;
+      --white: #ffffff;
+
+      --container: 1400px;
+      --radius: 22px;
+      --pill: 999px;
+
+      --shadow:
+        0 18px 45px rgba(8, 28, 50, .08);
     }
 
-    .nav-links{
-        gap:18px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .hero h1{
-        font-size:65px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .services-grid{
-        grid-template-columns:1fr 1fr;
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.5;
+      overflow-x: hidden;
     }
 
-    .service-intro{
-        grid-column:1/-1;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .contact-inner{
-        grid-template-columns:190px 1fr;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .contact-buttons{
-        grid-column:1/-1;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .footer-grid{
-        grid-template-columns:1fr 1fr 1fr;
-    }
-}
-
-@media(max-width:800px){
-
-    header{
-        height:auto;
+    .container {
+      width: min(calc(100% - 70px), var(--container));
+      margin: 0 auto;
     }
 
-    .nav{
-        padding:15px 20px;
-        flex-wrap:wrap;
+    /* =========================================================
+       BOTONES
+       ========================================================= */
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: var(--pill);
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
     }
 
-    .logo-top{
-        width:190px;
-        height:60px;
+    .pill-btn:hover {
+      transform: translateY(-2px);
     }
 
-    .nav-links{
-        order:3;
-        width:100%;
-        overflow-x:auto;
-        justify-content:flex-start;
-        padding:10px 0;
-        gap:24px;
+    .pill-blue {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 12px 30px rgba(7, 94, 232, .20);
     }
 
-    .nav-links a{
-        white-space:nowrap;
+    .pill-blue:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 15px 35px rgba(7, 94, 232, .28);
     }
 
-    .header-button{
-        display:none;
+    .pill-dark {
+      background: var(--navy);
+      color: white;
     }
 
-    .hero{
-        min-height:700px;
+    .pill-dark:hover {
+      background: #10243a;
+    }
+
+    .pill-outline {
+      background: white;
+      color: var(--navy);
+      border-color: #cbd5df;
+    }
+
+    .pill-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(214, 223, 232, .8);
+    }
+
+    .header-inner {
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    /* LOGO SUPERIOR GRANDE */
+    .header-logo {
+      width: 270px;
+      height: 92px;
+      object-fit: contain;
+      object-position: left center;
+      flex-shrink: 0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      flex: 1;
+    }
+
+    nav a {
+      position: relative;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #182332;
+      transition: color .2s ease;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -9px;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+      transition: width .25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-cta {
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      position: relative;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(5, 18, 31, .96) 0%,
+          rgba(5, 18, 31, .90) 37%,
+          rgba(5, 18, 31, .22) 67%,
+          rgba(5, 18, 31, .04) 100%
+        ),
+        url("fondo pagina.png") center center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.03),
+          transparent 30%,
+          rgba(255,255,255,.03)
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(650px, 100%);
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #79aaff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--blue);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 88px);
+      line-height: .94;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: white;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 .blue {
+      color: #2d78ff;
+    }
+
+    .hero-copy {
+      max-width: 530px;
+      color: rgba(255,255,255,.76);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    /* =========================================================
+       SECCIONES
+       ========================================================= */
+
+    section {
+      scroll-margin-top: 120px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 5vw, 67px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .section-title .blue {
+      color: var(--blue);
+    }
+
+    /* =========================================================
+       A MEDIDA
+       ========================================================= */
+
+    .services {
+      padding: 90px 0;
+      background: white;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 330px repeat(4, 1fr);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .services-intro {
+      padding: 42px 34px;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .services-intro .small-title {
+      color: #7ba8ff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .services-intro h2 {
+      font-size: 46px;
+      line-height: 1;
+      letter-spacing: -.045em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .services-intro p {
+      color: rgba(255,255,255,.76);
+      font-size: 14px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .service-card {
+      min-width: 0;
+      padding: 28px 22px 30px;
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      transition:
+        transform .25s ease,
+        background .25s ease;
+    }
+
+    .service-card:hover {
+      background: #f7faff;
+      transform: translateY(-4px);
+    }
+
+    .service-number {
+      color: var(--blue);
+      font-size: 29px;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .service-card h3 {
+      font-size: 17px;
+      line-height: 1.1;
+      font-weight: 950;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .service-image {
+      width: 100%;
+      height: 175px;
+      object-fit: contain;
+      object-position: center;
+      margin: 0 auto 17px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+      min-height: 63px;
+      margin-bottom: 20px;
+    }
+
+    .service-card .service-link {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* =========================================================
+       DETALLE SERVICIOS
+       ========================================================= */
+
+    .service-detail {
+      padding: 90px 0;
+      background:
+        linear-gradient(rgba(5, 94, 232, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5, 94, 232, .035) 1px, transparent 1px),
+        #f8fafc;
+      background-size: 42px 42px;
+    }
+
+    .service-detail-inner {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .detail-copy {
+      position: sticky;
+      top: 140px;
+    }
+
+    .detail-copy h2 {
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .detail-copy h2 span {
+      color: var(--blue);
+    }
+
+    .detail-copy p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 510px;
+    }
+
+    .detail-content {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .detail-content h3 {
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .detail-content p {
+      color: #596777;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .detail-content ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .detail-content li {
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: #f5f8fc;
+      border: 1px solid #e6edf5;
+      font-weight: 700;
+      color: #253346;
+    }
+
+    .detail-content li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    /* =========================================================
+       DE MODELO AL PLANO
+       ========================================================= */
+
+    .workflow {
+      padding: 105px 0;
+      background:
+        linear-gradient(rgba(10, 70, 150, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 70, 150, .035) 1px, transparent 1px),
+        #f7fafd;
+      background-size: 44px 44px;
+    }
+
+    .workflow-heading {
+      max-width: 430px;
+      margin-bottom: 55px;
+    }
+
+    .workflow-heading h2 {
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: .87;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .workflow-heading h2 .blue {
+      display: block;
+      color: var(--blue);
+    }
+
+    .workflow-heading p {
+      margin-top: 25px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .workflow-card {
+      background: white;
+      border: 1px solid var(--line);
+      padding: 18px;
+      box-shadow: 0 12px 35px rgba(10, 30, 50, .05);
+    }
+
+    .workflow-image-wrap {
+      height: 260px;
+      background: #f7f9fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 23px;
+    }
+
+    .workflow-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .workflow-card h3 {
+      font-size: 21px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .workflow-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       PROYECTOS
+       ========================================================= */
+
+    .projects {
+      padding: 105px 0;
+      background: white;
+    }
+
+    .projects-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
+    .project-feature {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      min-height: 510px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .project-info {
+      padding: 48px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #f8fafc;
+    }
+
+    .project-info .label {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .project-info h3 {
+      font-size: 45px;
+      line-height: .92;
+      letter-spacing: -.045em;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .project-meta {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 30px;
+      color: #5d6a79;
+      font-size: 13px;
+    }
+
+    .project-meta strong {
+      color: var(--text);
+    }
+
+    .project-image {
+      min-height: 510px;
+      background: #f1f4f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .cta {
+      padding: 90px 0;
+      background: var(--navy);
+      color: white;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 270px 1fr 430px;
+      align-items: center;
+      gap: 65px;
+    }
+
+    /* LOGO 2 MUY GRANDE */
+    .cta-logo {
+      width: 250px;
+      height: 210px;
+      object-fit: contain;
+      object-position: center;
+      filter: brightness(1.04);
+    }
+
+    .cta-kicker {
+      color: #5f9bff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 4vw, 64px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+    }
+
+    .cta h2 .blue {
+      display: block;
+      color: var(--blue);
+    }
+
+    .contacts {
+      display: grid;
+      gap: 13px;
+    }
+
+    .contact-pill {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 82px;
+      padding: 14px 20px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: var(--pill);
+      background: rgba(255,255,255,.035);
+      transition: .25s ease;
+    }
+
+    .contact-pill:hover {
+      border-color: var(--blue);
+      background: rgba(7,94,232,.12);
+      transform: translateX(-4px);
+    }
+
+    .contact-icon {
+      width: 49px;
+      height: 49px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7,94,232,.14);
+      color: #31d478;
+    }
+
+    .contact-icon.email {
+      color: #6da1ff;
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-text small {
+      color: #7f91a5;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .contact-text strong {
+      font-size: 14px;
+      color: white;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      background: white;
+      padding: 75px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .8fr .8fr .7fr;
+      gap: 60px;
+      padding-bottom: 60px;
+    }
+
+    /* LOGO 3 MUY GRANDE */
+    .footer-logo {
+      width: 245px;
+      height: 170px;
+      object-fit: contain;
+      object-position: left center;
+      margin-bottom: 18px;
+    }
+
+    .footer-brand p {
+      max-width: 320px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .footer-column h4 {
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 21px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-column li,
+    .footer-column a {
+      color: #657384;
+      font-size: 13px;
+      transition: color .2s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--blue);
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 20px;
+      border: 1px solid #d4dde7;
+      border-radius: var(--pill);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: .25s ease;
+    }
+
+    .social-pill:hover {
+      color: white;
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: #8995a2;
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      .header-inner {
+        min-height: auto;
+        padding: 20px 0 18px;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .header-logo {
+        width: 300px;
+        height: 105px;
+        object-position: center;
+      }
+
+      nav {
+        width: 100%;
+        flex: none;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .header-cta {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-intro {
+        grid-column: span 2;
+      }
+
+      .service-card:nth-child(3) {
+        border-left: 0;
+      }
+
+      .cta-grid {
+        grid-template-columns: 230px 1fr;
+      }
+
+      .contacts {
+        grid-column: 1 / -1;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+
+      .container {
+        width: min(calc(100% - 32px), var(--container));
+      }
+
+      /* =====================================================
+         MOBILE HEADER:
+         LOGO GRANDE ARRIBA
+         BARRA DE NAVEGACIÓN DEBAJO
+         ===================================================== */
+
+      header {
+        position: relative;
+      }
+
+      .header-inner {
+        padding: 18px 0 14px;
+        gap: 12px;
+      }
+
+      .header-logo {
+        width: 320px;
+        max-width: 94vw;
+        height: 105px;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        padding: 5px;
+        border: 1px solid #e0e6ed;
+        border-radius: var(--pill);
+        background: #f7f9fb;
+      }
+
+      nav a {
+        text-align: center;
+        padding: 11px 3px;
+        font-size: 9px;
+        letter-spacing: .03em;
+        border-radius: var(--pill);
+      }
+
+      nav a:hover {
+        background: white;
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+      /* HERO */
+
+      .hero {
+        min-height: 700px;
         background:
-            linear-gradient(180deg,
-            rgba(255,255,255,.96),
-            rgba(255,255,255,.55)),
-            url("fondo pagina.png") center/cover no-repeat;
+          linear-gradient(
+            180deg,
+            rgba(5,18,31,.96) 0%,
+            rgba(5,18,31,.88) 48%,
+            rgba(5,18,31,.73) 100%
+          ),
+          url("fondo pagina.png") center center / cover no-repeat;
+      }
+
+      .hero-content {
+        padding: 65px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 12vw, 64px);
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .pill-btn {
+        width: 100%;
+      }
+
+      /* SERVICES */
+
+      .services {
+        padding: 65px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-intro {
+        grid-column: auto;
+      }
+
+      .service-card {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .service-image {
+        height: 210px;
+      }
+
+      /* SERVICE DETAIL */
+
+      .service-detail {
+        padding: 65px 0;
+      }
+
+      .service-detail-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .detail-copy {
+        position: static;
+      }
+
+      .detail-content {
+        padding: 28px;
+      }
+
+      /* WORKFLOW */
+
+      .workflow {
+        padding: 70px 0;
+      }
+
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-image-wrap {
+        height: 250px;
+      }
+
+      /* PROJECT */
+
+      .projects {
+        padding: 70px 0;
+      }
+
+      .projects-header {
+        display: block;
+      }
+
+      .projects-header .pill-btn {
+        margin-top: 20px;
+      }
+
+      .project-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        order: -1;
+        min-height: 360px;
+      }
+
+      .project-info {
+        padding: 35px 25px;
+      }
+
+      /* CTA */
+
+      .cta {
+        padding: 65px 0;
+      }
+
+      .cta-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .cta-logo {
+        width: 320px;
+        max-width: 90%;
+        height: 230px;
+        margin: 0 auto;
+      }
+
+      .cta h2 {
+        font-size: 43px;
+      }
+
+      .contacts {
+        grid-column: auto;
+      }
+
+      .contact-pill {
+        text-align: left;
+      }
+
+      /* FOOTER */
+
+      footer {
+        padding-top: 60px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 25px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-logo {
+        width: 320px;
+        max-width: 95%;
+        height: 210px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
-    .hero-inner{
-        padding:55px 25px;
+    @media (max-width: 480px) {
+
+      .header-logo {
+        width: 285px;
+        height: 95px;
+      }
+
+      nav a {
+        font-size: 8px;
+      }
+
+      .services-intro h2 {
+        font-size: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
     }
-
-    .hero-content{
-        width:100%;
-    }
-
-    .hero h1{
-        font-size:60px;
-    }
-
-    .services-grid{
-        grid-template-columns:1fr;
-    }
-
-    .service-intro{
-        grid-column:auto;
-    }
-
-    .service-card{
-        border-left:none;
-        border-top:1px solid var(--line);
-    }
-
-    .workflow-grid{
-        grid-template-columns:1fr;
-    }
-
-    .workflow-header h2,
-    .projects-header h2{
-        font-size:55px;
-    }
-
-    .project-main{
-        grid-template-columns:1fr;
-    }
-
-    .project-image{
-        min-height:350px;
-        order:-1;
-    }
-
-    .contact-inner{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .logo-banner{
-        margin:auto;
-    }
-
-    .contact-buttons{
-        width:100%;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .footer-logo{
-        width:260px;
-        height:150px;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-        gap:12px;
-    }
-}
-
-@media(max-width:500px){
-
-    .hero h1{
-        font-size:50px;
-    }
-
-    .services,
-    .workflow,
-    .projects,
-    .contact-banner,
-    footer{
-        padding-left:18px;
-        padding-right:18px;
-    }
-
-    .service-intro h2{
-        font-size:38px;
-    }
-
-    .detail-title{
-        font-size:50px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
 
-<header>
+  <header>
+    <div class="container header-inner">
 
-<nav class="nav">
-
-    <a href="#inicio">
+      <!-- LOGO SUPERIOR -->
+      <a href="#inicio" aria-label="TRAZIUM - Inicio">
         <img
-            src="Logo Horizontal.png"
-            alt="TRAZIUM"
-            class="logo-top">
-    </a>
+          src="Logo Horizontal.png"
+          alt="TRAZIUM"
+          class="header-logo"
+        >
+      </a>
 
-    <div class="nav-links">
-        <a href="#inicio">INICIO</a>
-        <a href="#servicios">SERVICIOS</a>
-        <a href="#proceso">PROCESO</a>
-        <a href="#proyectos">PROYECTOS</a>
-        <a href="#contacto">CONTACTO</a>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a
+        href="https://wa.me/34679617787?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto"
+        target="_blank"
+        rel="noopener"
+        class="pill-btn pill-blue header-cta"
+      >
+        Solicitar presupuesto
+      </a>
+
     </div>
-
-    <a
-        class="btn header-button"
-        href="https://wa.me/34679617787?text=Hola%20TRAZIUM%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20proyecto."
-        target="_blank">
-        SOLICITAR PRESUPUESTO
-        <span class="arrow">↗</span>
-    </a>
-
-</nav>
-
-</header>
+  </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+  <main>
 
-<main id="inicio">
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
 
-<section class="hero">
+    <section class="hero" id="inicio">
 
-    <div class="hero-inner">
+      <div class="container">
 
         <div class="hero-content">
 
-            <div class="eyebrow">
-                MODElADO · PLANIMETRÍA · REFORMAS
+          <div class="eyebrow">
+            Modelado · Planimetría · Reformas
+          </div>
+
+          <h1>
+            <span>Modelamos</span>
+            <span class="blue">precisión.</span>
+            <br>
+            <span>Construimos</span>
+            <span class="blue">confianza.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Modelado BIM y documentación técnica para arquitectura,
+            estructuras e instalaciones. Transformamos ideas en
+            información clara, coordinada y lista para construir.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a
+              href="https://wa.me/34679617787?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto"
+              target="_blank"
+              rel="noopener"
+              class="pill-btn pill-blue"
+            >
+              Hablemos de tu proyecto
+            </a>
+
+            <a
+              href="#servicios"
+              class="pill-btn pill-outline"
+            >
+              Ver servicios
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         A MEDIDA
+         ===================================================== -->
+
+    <section class="services" id="servicios">
+
+      <div class="container">
+
+        <div class="services-grid">
+
+          <!-- INTRO -->
+          <div class="services-intro">
+
+            <div class="small-title">
+              Soluciones técnicas
             </div>
 
-            <h1>
-                Modelamos
-                <span>precisión.</span><br>
-                Construimos
-                confianza.
-            </h1>
+            <h2>A medida</h2>
 
-            <p class="hero-description">
-                Modelado BIM, documentación técnica y soluciones
-                para arquitectura, estructuras e instalaciones.
-                Convertimos ideas y planos en información clara,
-                coordinada y lista para construir.
+            <p>
+              Combinamos precisión, experiencia y tecnología BIM
+              para transformar ideas en documentación técnica,
+              coherente y construible.
             </p>
 
             <a
-                href="https://wa.me/34679617787?text=Hola%20TRAZIUM%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20proyecto."
-                target="_blank"
-                class="btn">
-                HABLEMOS DE TU PROYECTO
-                <span class="arrow">↗</span>
+              href="https://wa.me/34679617787?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto"
+              target="_blank"
+              rel="noopener"
+              class="pill-btn pill-blue"
+            >
+              Hablemos del proyecto
             </a>
 
-        </div>
+          </div>
 
-    </div>
 
-</section>
+          <!-- ARQUITECTURA -->
 
+          <article class="service-card">
 
-<!-- =====================================================
-     A MEDIDA
-===================================================== -->
+            <div class="service-number">01</div>
 
-<section class="services" id="servicios">
-
-<div class="services-grid">
-
-    <div class="service-intro">
-
-        <div class="small-title">
-            SOLUCIONES TÉCNICAS
-        </div>
-
-        <h2>
-            A MEDIDA
-        </h2>
-
-        <p>
-            Combinamos precisión, experiencia y tecnología
-            BIM para transformar ideas en documentación
-            técnica coherente y construible.
-        </p>
-
-        <a
-            href="https://wa.me/34679617787?text=Hola%20TRAZIUM%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20proyecto."
-            target="_blank"
-            class="btn"
-            style="margin-top:25px;width:max-content;">
-            HABLEMOS DEL PROYECTO
-            <span>↗</span>
-        </a>
-
-    </div>
-
-
-    <!-- ARQUITECTURA -->
-
-    <a href="#arquitectura" class="service-card">
-
-        <div class="service-number">01</div>
-
-        <h3>Arquitectura</h3>
-
-        <img
-            src="Arquitectura.png"
-            alt="Arquitectura"
-            class="service-image">
-
-        <p>
-            Planos inteligentes y modelos coordinados
-            para una documentación clara y precisa.
-        </p>
-
-        <div class="explore">
-            EXPLORAR →
-        </div>
-
-    </a>
-
-
-    <!-- ESTRUCTURAS -->
-
-    <a href="#estructuras" class="service-card">
-
-        <div class="service-number">02</div>
-
-        <h3>Estructuras</h3>
-
-        <img
-            src="Estructura.png"
-            alt="Estructuras"
-            class="service-image">
-
-        <p>
-            Modelado estructural preciso y detallado
-            para una mejor coordinación del proyecto.
-        </p>
-
-        <div class="explore">
-            EXPLORAR →
-        </div>
-
-    </a>
-
-
-    <!-- INSTALACIONES -->
-
-    <a href="#instalaciones" class="service-card">
-
-        <div class="service-number">03</div>
-
-        <h3>Instalaciones</h3>
-
-        <img
-            src="Instalaciones.jpeg"
-            alt="Instalaciones"
-            class="service-image">
-
-        <p>
-            Sistemas MEP integrados y coordinados
-            para reducir interferencias en obra.
-        </p>
-
-        <div class="explore">
-            EXPLORAR →
-        </div>
-
-    </a>
-
-
-    <!-- REFORMAS -->
-
-    <a href="#reformas" class="service-card">
-
-        <div class="service-number">04</div>
-
-        <h3>Reformas</h3>
-
-        <img
-            src="Reformas.png"
-            alt="Reformas"
-            class="service-image">
-
-        <p>
-            Levantamientos y modelos para rehabilitación,
-            reforma y transformación de espacios.
-        </p>
-
-        <div class="explore">
-            EXPLORAR →
-        </div>
-
-    </a>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     TEXTOS INDIVIDUALES
-===================================================== -->
-
-<section id="arquitectura" class="service-detail">
-
-<div class="detail-inner">
-
-    <div class="detail-label">TRAZIUM · SERVICIOS</div>
-
-    <h2 class="detail-title">Arquitectura</h2>
-
-    <div class="detail-text">
-
-        <p>
-            Transformamos la información arquitectónica en
-            documentación clara, ordenada y preparada para
-            coordinarse con el resto de disciplinas.
-        </p>
-
-        <p>
-            Trabajamos con planos, modelos BIM, levantamientos
-            y documentación gráfica para conseguir una visión
-            precisa del proyecto.
-        </p>
-
-        <p>
-            Este espacio está preparado para que puedas añadir
-            posteriormente tu propio texto, descripción de
-            servicios, proyectos realizados o información
-            comercial.
-        </p>
-
-    </div>
-
-    <a href="#servicios" class="btn back">
-        ← VOLVER A SERVICIOS
-    </a>
-
-</div>
-
-</section>
-
-
-<section id="estructuras" class="service-detail">
-
-<div class="detail-inner">
-
-    <div class="detail-label">TRAZIUM · SERVICIOS</div>
-
-    <h2 class="detail-title">Estructuras</h2>
-
-    <div class="detail-text">
-
-        <p>
-            Modelado y documentación de estructuras con especial
-            atención a la precisión geométrica y a la coordinación
-            entre disciplinas.
-        </p>
-
-        <p>
-            El objetivo es disponer de información fiable para
-            facilitar la toma de decisiones y reducir errores
-            durante la ejecución.
-        </p>
-
-    </div>
-
-    <a href="#servicios" class="btn back">
-        ← VOLVER A SERVICIOS
-    </a>
-
-</div>
-
-</section>
-
-
-<section id="instalaciones" class="service-detail">
-
-<div class="detail-inner">
-
-    <div class="detail-label">TRAZIUM · SERVICIOS</div>
-
-    <h2 class="detail-title">Instalaciones</h2>
-
-    <div class="detail-text">
-
-        <p>
-            Coordinación de instalaciones y sistemas MEP
-            mediante documentación gráfica y modelos digitales.
-        </p>
-
-        <p>
-            Trabajamos para que las diferentes instalaciones
-            puedan convivir correctamente dentro del proyecto.
-        </p>
-
-    </div>
-
-    <a href="#servicios" class="btn back">
-        ← VOLVER A SERVICIOS
-    </a>
-
-</div>
-
-</section>
-
-
-<section id="reformas" class="service-detail">
-
-<div class="detail-inner">
-
-    <div class="detail-label">TRAZIUM · SERVICIOS</div>
-
-    <h2 class="detail-title">Reformas</h2>
-
-    <div class="detail-text">
-
-        <p>
-            Levantamientos, documentación y modelos para
-            proyectos de reforma, rehabilitación y transformación
-            de espacios existentes.
-        </p>
-
-        <p>
-            La información se organiza para facilitar el
-            desarrollo del proyecto y su posterior ejecución.
-        </p>
-
-    </div>
-
-    <a href="#servicios" class="btn back">
-        ← VOLVER A SERVICIOS
-    </a>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     MODELO AL PLANO
-===================================================== -->
-
-<section class="workflow" id="proceso">
-
-<div class="workflow-inner">
-
-    <div class="workflow-header">
-
-        <h2>
-            DEL MODELO
-            <span>AL PLANO.</span>
-        </h2>
-
-        <p>
-            Un flujo técnico pensado para obtener resultados
-            claros, coordinados y fiables desde el modelo
-            hasta la ejecución.
-        </p>
-
-    </div>
-
-
-    <div class="workflow-grid">
-
-
-        <div class="workflow-card">
+            <h3>Arquitectura</h3>
 
             <img
+              src="Arquitectura.png"
+              alt="Arquitectura BIM"
+              class="service-image"
+            >
+
+            <p>
+              Modelos inteligentes y documentación
+              coordinada para proyectar con precisión.
+            </p>
+
+            <a
+              href="#arquitectura"
+              class="pill-btn pill-outline service-link"
+            >
+              Explorar
+            </a>
+
+          </article>
+
+
+          <!-- ESTRUCTURAS -->
+
+          <article class="service-card">
+
+            <div class="service-number">02</div>
+
+            <h3>Estructuras</h3>
+
+            <img
+              src="Estructura.png"
+              alt="Estructuras BIM"
+              class="service-image"
+            >
+
+            <p>
+              Modelado estructural preciso, detallado
+              y coordinado con el proyecto.
+            </p>
+
+            <a
+              href="#estructuras"
+              class="pill-btn pill-outline service-link"
+            >
+              Explorar
+            </a>
+
+          </article>
+
+
+          <!-- INSTALACIONES -->
+
+          <article class="service-card">
+
+            <div class="service-number">03</div>
+
+            <h3>Instalaciones</h3>
+
+            <img
+              src="Instalaciones.jpeg"
+              alt="Instalaciones BIM"
+              class="service-image"
+            >
+
+            <p>
+              Sistemas técnicos integrados y
+              coordinados para reducir interferencias.
+            </p>
+
+            <a
+              href="#instalaciones"
+              class="pill-btn pill-outline service-link"
+            >
+              Explorar
+            </a>
+
+          </article>
+
+
+          <!-- REFORMAS -->
+
+          <article class="service-card">
+
+            <div class="service-number">04</div>
+
+            <h3>Reformas</h3>
+
+            <img
+              src="Reformas.png"
+              alt="Reformas"
+              class="service-image"
+            >
+
+            <p>
+              Documentación gráfica y modelos para
+              rehabilitación y reforma.
+            </p>
+
+            <a
+              href="#reformas"
+              class="pill-btn pill-outline service-link"
+            >
+              Explorar
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DETALLE DE SERVICIOS
+         ===================================================== -->
+
+    <section class="service-detail" id="arquitectura">
+
+      <div class="container service-detail-inner">
+
+        <div class="detail-copy">
+
+          <div class="section-label">
+            Servicio
+          </div>
+
+          <h2>
+            <span>Arquitectura</span><br>
+            BIM
+          </h2>
+
+          <p>
+            Modelamos cada elemento del proyecto para convertir
+            la información técnica en una herramienta clara,
+            precisa y útil durante todo el proceso.
+          </p>
+
+        </div>
+
+        <div class="detail-content">
+
+          <h3>Arquitectura</h3>
+
+          <p>
+            Aquí puedes colocar la descripción completa de tus
+            servicios de arquitectura. Puedes explicar qué
+            entregas realizas, cómo trabajas y qué ventajas
+            obtiene el cliente.
+          </p>
+
+          <p>
+            El objetivo es que cada modelo y cada plano sea
+            comprensible, coordinado y preparado para su
+            utilización en obra.
+          </p>
+
+          <ul>
+            <li>Modelado BIM arquitectónico</li>
+            <li>Planos y documentación técnica</li>
+            <li>Coordinación de proyecto</li>
+            <li>Modelos inteligentes</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="service-detail" id="estructuras">
+
+      <div class="container service-detail-inner">
+
+        <div class="detail-copy">
+
+          <div class="section-label">
+            Servicio
+          </div>
+
+          <h2>
+            <span>Estructuras</span><br>
+            BIM
+          </h2>
+
+          <p>
+            Modelado estructural preciso para comprender,
+            coordinar y documentar cada elemento del sistema
+            resistente.
+          </p>
+
+        </div>
+
+        <div class="detail-content">
+
+          <h3>Estructuras</h3>
+
+          <p>
+            En este espacio puedes introducir el texto
+            específico de tus servicios de estructuras.
+          </p>
+
+          <p>
+            Puedes explicar aquí los sistemas que modelas,
+            el nivel de detalle, documentación y coordinación
+            que entregas al cliente.
+          </p>
+
+          <ul>
+            <li>Modelado estructural</li>
+            <li>Estructuras metálicas</li>
+            <li>Documentación gráfica</li>
+            <li>Coordinación BIM</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="service-detail" id="instalaciones">
+
+      <div class="container service-detail-inner">
+
+        <div class="detail-copy">
+
+          <div class="section-label">
+            Servicio
+          </div>
+
+          <h2>
+            <span>Instalaciones</span><br>
+            MEP
+          </h2>
+
+          <p>
+            Integramos los sistemas técnicos del edificio para
+            detectar interferencias y mejorar la coordinación.
+          </p>
+
+        </div>
+
+        <div class="detail-content">
+
+          <h3>Instalaciones</h3>
+
+          <p>
+            Puedes colocar aquí la explicación completa de
+            tus servicios de instalaciones.
+          </p>
+
+          <p>
+            Describe los sistemas que trabajas, el tipo de
+            documentación que entregas y cómo el modelado ayuda
+            a coordinar el proyecto.
+          </p>
+
+          <ul>
+            <li>Modelado MEP</li>
+            <li>Coordinación de instalaciones</li>
+            <li>Detección de interferencias</li>
+            <li>Documentación técnica</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="service-detail" id="reformas">
+
+      <div class="container service-detail-inner">
+
+        <div class="detail-copy">
+
+          <div class="section-label">
+            Servicio
+          </div>
+
+          <h2>
+            <span>Reformas</span><br>
+            Y REHABILITACIÓN
+          </h2>
+
+          <p>
+            Convertimos el estado existente y las necesidades
+            del proyecto en documentación clara para intervenir
+            con mayor seguridad.
+          </p>
+
+        </div>
+
+        <div class="detail-content">
+
+          <h3>Reformas</h3>
+
+          <p>
+            Puedes escribir aquí la descripción completa de tus
+            servicios de reforma y rehabilitación.
+          </p>
+
+          <p>
+            Explica los levantamientos, planos, modelos y
+            documentación que realizas para cada proyecto.
+          </p>
+
+          <ul>
+            <li>Levantamiento y modelado</li>
+            <li>Planos de reforma</li>
+            <li>Documentación gráfica</li>
+            <li>Rehabilitación y actualización</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROCESO
+         ===================================================== -->
+
+    <section class="workflow" id="proceso">
+
+      <div class="container">
+
+        <!-- SIN "FLUJO DE TRABAJO" -->
+
+        <div class="workflow-heading">
+
+          <h2>
+            De modelo
+            <span class="blue">al plano.</span>
+          </h2>
+
+          <p>
+            Un flujo técnico pensado para obtener
+            resultados claros y confiables.
+          </p>
+
+        </div>
+
+
+        <div class="workflow-grid">
+
+          <!-- MODELO BIM -->
+
+          <article class="workflow-card">
+
+            <div class="workflow-image-wrap">
+
+              <img
                 src="MOD BIM.png"
                 alt="Modelo BIM"
-                class="workflow-img">
+              >
 
-            <h3>Modelo BIM</h3>
-
-            <p>
-                Información coordinada y precisa
-                para representar el proyecto.
-            </p>
-
-        </div>
-
-
-        <div class="workflow-card">
-
-            <img
-                src="DOC.TECNICOS.jpeg"
-                alt="Documentación técnica"
-                class="workflow-img">
-
-            <h3>Documentación técnica</h3>
-
-            <p>
-                Planos, detalles y memorias gráficas
-                preparados para el desarrollo del proyecto.
-            </p>
-
-        </div>
-
-
-        <div class="workflow-card">
-
-            <img
-                src="OBRAS.png"
-                alt="Obra"
-                class="workflow-img">
-
-            <h3>Obra</h3>
-
-            <p>
-                Ejecución eficiente y con la información
-                necesaria para reducir imprevistos.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     PROYECTOS
-===================================================== -->
-
-<section class="projects" id="proyectos">
-
-<div class="projects-inner">
-
-    <div class="projects-header">
-
-        <div>
-            <h2>Proyectos</h2>
-        </div>
-
-        <div class="label">
-            PROYECTO DESTACADO
-        </div>
-
-    </div>
-
-
-    <div class="project-main">
-
-        <div class="project-info">
-
-            <div class="project-label">
-                PROYECTO DESTACADO
             </div>
 
             <h3>
-                Vivienda
-                unifamiliar
+              Modelo BIM
             </h3>
 
             <p>
-                <strong>TIPO</strong> · Modelado BIM
+              Información coordinada y precisa.
             </p>
 
-            <p>
-                <strong>DISCIPLINA</strong> · Arquitectura
-            </p>
+          </article>
+
+
+          <!-- DOCUMENTACIÓN -->
+
+          <article class="workflow-card">
+
+            <div class="workflow-image-wrap">
+
+              <img
+                src="DOC.TECNICOS.jpeg"
+                alt="Documentación técnica"
+              >
+
+            </div>
+
+            <h3>
+              Documentación técnica
+            </h3>
 
             <p>
-                <strong>SUPERFICIE</strong> · 320 m²
+              Planos, detalles y memorias gráficas.
             </p>
+
+          </article>
+
+
+          <!-- OBRA -->
+
+          <article class="workflow-card">
+
+            <div class="workflow-image-wrap">
+
+              <img
+                src="OBRAS.png"
+                alt="Obra"
+              >
+
+            </div>
+
+            <h3>
+              Obra
+            </h3>
+
+            <p>
+              Ejecución eficiente y sin sorpresas.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROYECTOS
+         ===================================================== -->
+
+    <section class="projects" id="proyectos">
+
+      <div class="container">
+
+        <div class="projects-header">
+
+          <div>
+
+            <div class="section-label">
+              Proyecto
+            </div>
+
+            <h2 class="section-title">
+              Proyectos
+            </h2>
+
+          </div>
+
+          <a
+            href="#contacto"
+            class="pill-btn pill-outline"
+          >
+            Ver proyecto
+          </a>
+
+        </div>
+
+
+        <!-- SOLO PROYECTO PRINCIPAL -->
+        <div class="project-feature">
+
+          <div class="project-info">
+
+            <div class="label">
+              Proyecto destacado
+            </div>
+
+            <h3>
+              Vivienda<br>
+              unifamiliar
+            </h3>
+
+            <div class="project-meta">
+
+              <div>
+                <strong>Tipo</strong> · Modelado BIM
+              </div>
+
+              <div>
+                <strong>Disciplina</strong> · Arquitectura
+              </div>
+
+              <div>
+                <strong>Superficie</strong> · 320 m²
+              </div>
+
+            </div>
 
             <a
-                href="https://wa.me/34679617787?text=Hola%20TRAZIUM%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20proyecto."
-                target="_blank"
-                class="btn"
-                style="margin-top:25px;width:max-content;">
-                VER PROYECTO →
+              href="#contacto"
+              class="pill-btn pill-blue"
+            >
+              Ver proyecto
             </a>
 
-        </div>
+          </div>
 
 
-        <div class="project-image">
+          <div class="project-image">
 
             <img
-                src="Vivienda unifamiliar.png"
-                alt="Vivienda unifamiliar">
+              src="Vivienda unifamiliar.png"
+              alt="Vivienda unifamiliar TRAZIUM"
+            >
+
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</div>
-
-</section>
+    </section>
 
 
-<!-- =====================================================
-     CONTACTO
-===================================================== -->
+    <!-- =====================================================
+         CONTACTO / CTA
+         ===================================================== -->
 
-<section class="contact-banner" id="contacto">
+    <section class="cta" id="contacto">
 
-<div class="contact-inner">
+      <div class="container">
 
-    <!-- LOGO 2 -->
+        <div class="cta-grid">
 
-    <div>
-        <img
-            src="logo.jpg"
+          <!-- LOGO GRANDE 2 -->
+          <div>
+
+            <img
+              src="logo.PNG"
+              alt="TRAZIUM"
+              class="cta-logo"
+            >
+
+          </div>
+
+
+          <div>
+
+            <div class="cta-kicker">
+              Hablemos
+            </div>
+
+            <h2>
+              ¿Tiene un proyecto?
+              <span class="blue">
+                Hagamos que cada línea tenga sentido.
+              </span>
+            </h2>
+
+          </div>
+
+
+          <!-- CONTACTOS -->
+
+          <div class="contacts">
+
+            <!-- WHATSAPP -->
+
+            <a
+              class="contact-pill"
+              href="https://wa.me/34679617787?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto"
+              target="_blank"
+              rel="noopener"
+              aria-label="Contactar por WhatsApp"
+            >
+
+              <span class="contact-icon">
+
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.5 11.2a8.45 8.45 0 0 1-12.5 7.3L3.5 20l1.5-4.3A8.45 8.45 0 1 1 20.5 11.2Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M8.3 7.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2.1.4 0 .6l-.5.7c-.1.2-.1.3 0 .5.5 1 1.3 1.8 2.3 2.3.2.1.4.1.5 0l.7-.5c.2-.1.4-.1.6 0l1.5.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1 .3-1.5.2-1.3-.2-2.8-1-4.1-2.3-1.3-1.3-2.1-2.8-2.3-4.1-.1-.5 0-1.1.2-1.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+
+              </span>
+
+              <span class="contact-text">
+
+                <small>WhatsApp</small>
+
+                <strong>
+                  +34 679 617 787
+                </strong>
+
+              </span>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+              class="contact-pill"
+              href="mailto:comercial.trazium@outlook.com"
+              aria-label="Enviar correo electrónico"
+            >
+
+              <span class="contact-icon email">
+
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="m4 7 8 6 8-6"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+
+              </span>
+
+              <span class="contact-text">
+
+                <small>Email</small>
+
+                <strong>
+                  comercial.trazium@outlook.com
+                </strong>
+
+              </span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- LOGO GRANDE 3 -->
+
+        <div class="footer-brand">
+
+          <img
+            src="logo.PNG"
             alt="TRAZIUM"
-            class="logo-banner">
-    </div>
+            class="footer-logo"
+          >
 
-
-    <div class="contact-title">
-
-        <div class="mini">
-            HABLEMOS
-        </div>
-
-        <h2>
-            ¿TIENE UN PROYECTO?<br>
-            <span>HAGAMOS QUE CADA</span><br>
-            LÍNEA TENGA SENTIDO.
-        </h2>
-
-    </div>
-
-
-    <div class="contact-buttons">
-
-
-        <!-- WHATSAPP -->
-
-        <a
-            class="contact-pill"
-            href="https://wa.me/34679617787?text=Hola%20TRAZIUM%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20proyecto."
-            target="_blank">
-
-            <div class="contact-icon whatsapp-icon">
-
-                <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2">
-
-                    <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-4-.9L3 20l1.1-4.7A8.3 8.3 0 0 1 3 11.5a8.4 8.4 0 1 1 18 0z"/>
-
-                    <path d="M8.5 8.5c.2-.4.4-.5.7-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.5.6c.5 1 1.3 1.8 2.3 2.3l.6-.5c.2-.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3-.1.5-.5.7-.4.2-1.1.3-1.8.1-1.1-.3-2.4-1-3.5-2.1-1.1-1.1-1.8-2.4-2.1-3.5-.2-.7-.1-1.4.1-1.8z"/>
-
-                </svg>
-
-            </div>
-
-            <div class="contact-pill-text">
-
-                <small>WHATSAPP</small>
-
-                <strong>+34 679 617 787</strong>
-
-            </div>
-
-        </a>
-
-
-        <!-- EMAIL -->
-
-        <a
-            class="contact-pill"
-            href="mailto:comercial.trazium@outlook.com">
-
-            <div class="contact-icon mail-icon">
-
-                <svg
-                    width="21"
-                    height="21"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2">
-
-                    <rect x="3" y="5" width="18" height="14" rx="2"/>
-
-                    <path d="m3 7 9 6 9-6"/>
-
-                </svg>
-
-            </div>
-
-            <div class="contact-pill-text">
-
-                <small>EMAIL</small>
-
-                <strong>comercial.trazium@outlook.com</strong>
-
-            </div>
-
-        </a>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-<div class="footer-inner">
-
-    <div class="footer-grid">
-
-
-        <div>
-
-            <!-- LOGO 3 MUCHO MÁS GRANDE -->
-
-            <img
-                src="logo.jpg"
-                alt="TRAZIUM"
-                class="footer-logo">
-
-            <p class="footer-description">
-                Transformamos ideas en documentación técnica
-                precisa, coordinada y lista para construir.
-            </p>
+          <p>
+            Transformamos ideas en documentación técnica
+            precisa, coordinada y lista para construir.
+          </p>
 
         </div>
 
+
+        <!-- ENLACES -->
 
         <div class="footer-column">
 
-            <h4>ENLACES</h4>
+          <h4>Enlaces</h4>
 
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#proceso">Proceso</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
+          <ul>
+
+            <li>
+              <a href="#inicio">Inicio</a>
+            </li>
+
+            <li>
+              <a href="#servicios">Servicios</a>
+            </li>
+
+            <li>
+              <a href="#proceso">Proceso</a>
+            </li>
+
+            <li>
+              <a href="#proyectos">Proyectos</a>
+            </li>
+
+            <li>
+              <a href="#contacto">Contacto</a>
+            </li>
+
+          </ul>
 
         </div>
 
+
+        <!-- SERVICIOS -->
 
         <div class="footer-column">
 
-            <h4>SERVICIOS</h4>
+          <h4>Servicios</h4>
 
-            <a href="#arquitectura">Arquitectura</a>
-            <a href="#estructuras">Estructuras</a>
-            <a href="#instalaciones">Instalaciones</a>
-            <a href="#reformas">Reformas</a>
-            <a href="#proceso">Levantamientos BIM</a>
+          <ul>
+
+            <li>
+              <a href="#arquitectura">
+                Arquitectura
+              </a>
+            </li>
+
+            <li>
+              <a href="#estructuras">
+                Estructuras
+              </a>
+            </li>
+
+            <li>
+              <a href="#instalaciones">
+                Instalaciones
+              </a>
+            </li>
+
+            <li>
+              <a href="#reformas">
+                Reformas
+              </a>
+            </li>
+
+          </ul>
 
         </div>
 
+
+        <!-- SÍGUENOS -->
 
         <div class="footer-column">
 
-            <h4>LEGAL</h4>
+          <h4>
+            Síguenos
+          </h4>
 
-            <a href="#">Aviso legal</a>
-            <a href="#">Política de privacidad</a>
-            <a href="#">Política de cookies</a>
+          <div class="socials">
+
+            <!-- CAMBIA ESTOS ENLACES POR LOS PERFILES REALES -->
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener"
+              class="social-pill"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener"
+              class="social-pill"
+            >
+              Instagram
+            </a>
+
+          </div>
 
         </div>
 
+      </div>
 
-        <div class="footer-column">
 
-            <h4>SÍGUENOS</h4>
+      <div class="footer-bottom">
 
-            <div class="socials">
+        <span>
+          © 2024 TRAZIUM. Todos los derechos reservados.
+        </span>
 
-                <a href="#" class="social">in</a>
+        <span>
+          PRECISIÓN EN CADA TRAZO
+        </span>
 
-                <a href="#" class="social">◎</a>
-
-                <a
-                    href="https://wa.me/34679617787?text=Hola%20TRAZIUM%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20proyecto."
-                    target="_blank"
-                    class="social">
-                    W
-                </a>
-
-            </div>
-
-        </div>
+      </div>
 
     </div>
 
+  </footer>
 
-    <div class="footer-bottom">
 
-        <div>
-            © 2026 TRAZIUM. Todos los derechos reservados.
-        </div>
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
 
-        <div class="footer-slogan">
-            PRECISIÓN EN CADA TRAZO
-        </div>
+  <script>
 
-    </div>
+    /*
+      Los botones de servicios funcionan mediante anclas:
 
-</div>
+      Arquitectura  -> #arquitectura
+      Estructuras   -> #estructuras
+      Instalaciones -> #instalaciones
+      Reformas      -> #reformas
 
-</footer>
+      Para cambiar el texto de cualquiera de estos apartados,
+      simplemente modifica el contenido dentro de su sección.
+    */
 
-</main>
+
+    // Animación suave para los enlaces internos
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+      link.addEventListener("click", function(event) {
+
+        const targetId = this.getAttribute("href");
+
+        if (
+          !targetId ||
+          targetId === "#" ||
+          !document.querySelector(targetId)
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+
+        document.querySelector(targetId).scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      });
+
+    });
+
+
+    // Pequeña animación de entrada de las tarjetas
+
+    const observer = new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        ".service-card, .workflow-card, .project-feature, .detail-content"
+      )
+      .forEach(element => {
+
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+        element.style.transition =
+          "opacity .6s ease, transform .6s ease";
+
+        observer.observe(element);
+
+      });
+
+  </script>
 
 </body>
 </html>
