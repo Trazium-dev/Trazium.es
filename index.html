@@ -6,7 +6,10 @@
 
     <title>TraziUm | Precisión en cada trazo</title>
 
-    <meta name="description" content="TraziUm - Modelado BIM, delineación técnica, estructuras e instalaciones.">
+    <meta
+        name="description"
+        content="TraziUm - Modelado BIM, delineación técnica, estructuras e instalaciones."
+    >
 
     <style>
 
@@ -77,9 +80,14 @@
             gap: 30px;
         }
 
+        /* LOGO HORIZONTAL */
+
         .logo {
-            width: 145px;
+            width: 185px;
             height: auto;
+            max-height: 70px;
+            object-fit: contain;
+            object-position: center;
         }
 
         nav {
@@ -152,7 +160,7 @@
         }
 
         .hero-content {
-            width: 520px;
+            width: 610px;
             padding: 70px 0;
             position: relative;
             z-index: 2;
@@ -167,8 +175,8 @@
         }
 
         .hero h1 {
-            font-size: clamp(50px, 5vw, 82px);
-            line-height: .92;
+            font-size: clamp(46px, 5vw, 76px);
+            line-height: .94;
             letter-spacing: -3px;
             font-weight: 950;
             text-transform: uppercase;
@@ -245,7 +253,12 @@
             position: relative;
             background:
                 linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
-                linear-gradient(90deg, transparent 49%, #edf1f5 50%, transparent 51%);
+                linear-gradient(
+                    90deg,
+                    transparent 49%,
+                    #edf1f5 50%,
+                    transparent 51%
+                );
         }
 
         .service-number {
@@ -258,14 +271,20 @@
         .service h3 {
             font-size: 17px;
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
+
+        /*
+         * IMÁGENES DE SERVICIOS
+         * Se muestran completas, centradas y sin recortar.
+         */
 
         .service img {
             width: 100%;
-            height: 145px;
+            height: 175px;
             object-fit: contain;
-            margin-bottom: 22px;
+            object-position: center center;
+            margin: 0 auto 22px auto;
         }
 
         .service p {
@@ -289,7 +308,10 @@
         .process {
             padding: 100px 0;
             background:
-                linear-gradient(rgba(248,250,252,.9), rgba(248,250,252,.9)),
+                linear-gradient(
+                    rgba(248,250,252,.9),
+                    rgba(248,250,252,.9)
+                ),
                 repeating-linear-gradient(
                     90deg,
                     transparent 0,
@@ -356,16 +378,30 @@
             gap: 20px;
         }
 
+        /*
+         * TARJETAS DEL PROCESO
+         */
+
         .process-card {
             background: white;
             border: 1px solid #e0e5ea;
             padding-bottom: 25px;
+            overflow: hidden;
         }
+
+        /*
+         * Las imágenes ahora tienen espacio suficiente
+         * y NO se cortan.
+         */
 
         .process-card img {
             width: 100%;
-            height: 190px;
-            object-fit: cover;
+            height: 230px;
+            object-fit: contain;
+            object-position: center center;
+            padding: 10px;
+            background: #ffffff;
+            margin: 0 auto;
         }
 
         .process-card-content {
@@ -451,12 +487,17 @@
         .project-main-image {
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f8fa;
         }
 
         .project-main-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
 
         .project-tag {
@@ -491,7 +532,8 @@
         .side-project img {
             width: 90px;
             height: 75px;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
         }
 
         .side-project h4 {
@@ -507,7 +549,7 @@
 
 
         /* =========================================================
-           CTA / WHATSAPP
+           CTA / CONTACTO
         ========================================================= */
 
         .cta {
@@ -523,9 +565,16 @@
             gap: 45px;
         }
 
+        /*
+         * AHORA UTILIZA logo.png
+         */
+
         .cta-logo {
-            width: 140px;
-            filter: brightness(0) invert(1);
+            width: 150px;
+            height: auto;
+            max-height: 130px;
+            object-fit: contain;
+            object-position: center;
         }
 
         .cta-small {
@@ -746,7 +795,8 @@
             }
 
             .logo {
-                width: 120px;
+                width: 150px;
+                max-height: 60px;
             }
 
             nav {
@@ -777,7 +827,8 @@
             }
 
             .hero h1 {
-                font-size: 52px;
+                font-size: 46px;
+                letter-spacing: -2px;
             }
 
             .services-grid {
@@ -794,6 +845,10 @@
 
             .process-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .process-card img {
+                height: 260px;
             }
 
             .project-box {
@@ -816,6 +871,10 @@
 
             .contact-box {
                 grid-column: auto;
+            }
+
+            .cta-logo {
+                width: 140px;
             }
 
             .footer-grid {
@@ -844,32 +903,64 @@
     ========================================================= -->
 
     <header>
+
         <div class="container header-inner">
 
+            <!-- LOGO HORIZONTAL -->
+
             <a href="#inicio">
-                <img src="logo.jpg" alt="TraziUm" class="logo">
+                <img
+                    src="logo horizontal"
+                    alt="TraziUm"
+                    class="logo"
+                >
             </a>
 
+
             <nav>
-                <a href="#inicio">INICIO</a>
-                <a href="#servicios">SERVICIOS</a>
-                <a href="#proceso">PROCESO</a>
-                <a href="#proyectos">PROYECTOS</a>
-                <a href="#contacto">CONTACTO</a>
+
+                <a href="#inicio">
+                    INICIO
+                </a>
+
+                <a href="#servicios">
+                    SERVICIOS
+                </a>
+
+                <a href="#proceso">
+                    PROCESO
+                </a>
+
+                <a href="#proyectos">
+                    PROYECTOS
+                </a>
+
+                <a href="#contacto">
+                    CONTACTO
+                </a>
+
             </nav>
 
+
             <!-- BOTÓN WHATSAPP -->
+
             <a
                 class="btn"
                 href="https://wa.me/34679617787?text=Hola%20TraziUm,%20me%20gustaría%20solicitar%20un%20presupuesto."
                 target="_blank"
                 rel="noopener"
             >
+
                 SOLICITAR PRESUPUESTO
-                <span class="arrow">↗</span>
+
+                <span class="arrow">
+                    ↗
+                </span>
+
             </a>
 
         </div>
+
     </header>
 
 
@@ -890,28 +981,46 @@
                         MODELADO · DELINEACIÓN · CONSTRUCCIÓN
                     </div>
 
+
+                    <!-- NUEVO TITULAR -->
+
                     <h1>
-                        <span>PRECISIÓN</span><br>
-                        QUE SE<br>
-                        CONVIERTE<br>
-                        EN PROYECTO.
+
+                        <span>MODELAMOS</span><br>
+
+                        PRECISIÓN.<br>
+
+                        CONSTRUIMOS<br>
+
+                        CONFIANZA.
+
                     </h1>
 
+
                     <p>
+
                         Modelado BIM y delineación técnica para arquitectura,
                         estructuras e instalaciones. Documentación clara,
                         coordinada y lista para construir.
+
                     </p>
 
+
                     <!-- WHATSAPP -->
+
                     <a
                         class="btn"
                         href="https://wa.me/34679617787?text=Hola%20TraziUm,%20quiero%20hablar%20sobre%20un%20proyecto."
                         target="_blank"
                         rel="noopener"
                     >
+
                         HABLEMOS DE TU PROYECTO
-                        <span class="arrow">↗</span>
+
+                        <span class="arrow">
+                            ↗
+                        </span>
+
                     </a>
 
                 </div>
@@ -932,6 +1041,9 @@
 
                 <div class="services-grid">
 
+
+                    <!-- INTRO -->
+
                     <div class="service-intro">
 
                         <div class="small">
@@ -944,28 +1056,39 @@
                         </h2>
 
                         <p>
+
                             Combinamos precisión, experiencia y tecnología BIM
                             para transformar ideas en documentación técnica
                             coherente y construible.
+
                         </p>
 
                         <a
                             href="https://wa.me/34679617787?text=Hola%20TraziUm,%20quiero%20información%20sobre%20vuestros%20servicios."
                             target="_blank"
                         >
+
                             HABLEMOS DEL PROYECTO →
+
                         </a>
 
                     </div>
 
 
-                    <!-- ARQUITECTURA -->
+
+                    <!-- =================================================
+                         ARQUITECTURA
+                    ================================================== -->
 
                     <div class="service">
 
-                        <div class="service-number">01</div>
+                        <div class="service-number">
+                            01
+                        </div>
 
-                        <h3>ARQUITECTURA</h3>
+                        <h3>
+                            ARQUITECTURA
+                        </h3>
 
                         <img
                             src="Arquitectura.png"
@@ -987,16 +1110,25 @@
                     </div>
 
 
-                    <!-- ESTRUCTURAS -->
+
+                    <!-- =================================================
+                         ESTRUCTURAS
+                    ================================================== -->
 
                     <div class="service">
 
-                        <div class="service-number">02</div>
+                        <div class="service-number">
+                            02
+                        </div>
 
-                        <h3>ESTRUCTURAS</h3>
+                        <h3>
+                            ESTRUCTURAS
+                        </h3>
+
+                        <!-- NOMBRE EXACTO DEL ARCHIVO -->
 
                         <img
-                            src="Estructuras.png"
+                            src=" Estructuras..png"
                             alt="Estructuras"
                         >
 
@@ -1015,13 +1147,20 @@
                     </div>
 
 
-                    <!-- INSTALACIONES -->
+
+                    <!-- =================================================
+                         INSTALACIONES
+                    ================================================== -->
 
                     <div class="service">
 
-                        <div class="service-number">03</div>
+                        <div class="service-number">
+                            03
+                        </div>
 
-                        <h3>INSTALACIONES</h3>
+                        <h3>
+                            INSTALACIONES
+                        </h3>
 
                         <img
                             src="Instalaciones.png"
@@ -1043,13 +1182,20 @@
                     </div>
 
 
-                    <!-- REFORMAS -->
+
+                    <!-- =================================================
+                         REFORMAS
+                    ================================================== -->
 
                     <div class="service">
 
-                        <div class="service-number">04</div>
+                        <div class="service-number">
+                            04
+                        </div>
 
-                        <h3>REFORMAS</h3>
+                        <h3>
+                            REFORMAS
+                        </h3>
 
                         <img
                             src="Reformas.png"
@@ -1086,6 +1232,7 @@
 
             <div class="container process-layout">
 
+
                 <div class="process-intro">
 
                     <div class="section-label">
@@ -1105,14 +1252,18 @@
                 </div>
 
 
+
                 <div class="process-content">
 
                     <div class="timeline"></div>
 
+
                     <div class="process-grid">
 
 
-                        <!-- MODELO BIM -->
+                        <!-- =================================================
+                             MODELO BIM
+                        ================================================== -->
 
                         <div class="process-card">
 
@@ -1136,7 +1287,10 @@
                         </div>
 
 
-                        <!-- DOCUMENTACIÓN -->
+
+                        <!-- =================================================
+                             DOCUMENTACIÓN TÉCNICA
+                        ================================================== -->
 
                         <div class="process-card">
 
@@ -1160,7 +1314,10 @@
                         </div>
 
 
-                        <!-- OBRA -->
+
+                        <!-- =================================================
+                             OBRA
+                        ================================================== -->
 
                         <div class="process-card">
 
@@ -1201,6 +1358,7 @@
 
             <div class="container">
 
+
                 <div class="projects-header">
 
                     <div>
@@ -1215,6 +1373,7 @@
 
                     </div>
 
+
                     <a
                         href="https://wa.me/34679617787?text=Hola%20TraziUm,%20quiero%20ver%20más%20información%20sobre%20vuestros%20proyectos."
                         target="_blank"
@@ -1223,6 +1382,7 @@
                     </a>
 
                 </div>
+
 
 
                 <div class="project-box">
@@ -1260,6 +1420,7 @@
                     </div>
 
 
+
                     <!-- IMAGEN PRINCIPAL -->
 
                     <div class="project-main-image">
@@ -1276,7 +1437,8 @@
                     </div>
 
 
-                    <!-- PROYECTOS LATERALES -->
+
+                    <!-- LATERALES -->
 
                     <div class="project-side">
 
@@ -1284,7 +1446,7 @@
                         <div class="side-project">
 
                             <img
-                                src="Estruct. Metálica nave industrial.png"
+                                src=" Estructuras..png"
                                 alt="Estructura"
                             >
 
@@ -1324,7 +1486,6 @@
 
                         </div>
 
-
                     </div>
 
                 </div>
@@ -1336,7 +1497,7 @@
 
 
         <!-- =====================================================
-             CONTACTO / WHATSAPP
+             CONTACTO
         ===================================================== -->
 
         <section class="cta" id="contacto">
@@ -1344,15 +1505,18 @@
             <div class="container cta-inner">
 
 
+                <!-- LOGO PNG -->
+
                 <div>
 
                     <img
-                        src="logo.jpg"
+                        src="logo.png"
                         alt="TraziUm"
                         class="cta-logo"
                     >
 
                 </div>
+
 
 
                 <div>
@@ -1362,15 +1526,22 @@
                     </div>
 
                     <h2>
+
                         ¿TIENE UN PROYECTO?<br>
-                        <span>HAGAMOS QUE CADA</span><br>
+
+                        <span>
+                            HAGAMOS QUE CADA
+                        </span><br>
+
                         LÍNEA TENGA SENTIDO.
+
                     </h2>
 
                 </div>
 
 
-                <!-- CONTACTOS FUNCIONALES -->
+
+                <!-- CONTACTOS -->
 
                 <div class="contact-box">
 
@@ -1404,9 +1575,12 @@
 
                         </div>
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
+
 
 
                     <!-- EMAIL -->
@@ -1436,7 +1610,9 @@
 
                         </div>
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
 
@@ -1458,23 +1634,27 @@
 
         <div class="container">
 
+
             <div class="footer-grid">
 
 
                 <div>
 
                     <img
-                        src="logo.jpg"
+                        src="logo.png"
                         alt="TraziUm"
                         class="footer-logo"
                     >
 
                     <p class="footer-description">
+
                         Transformamos ideas en documentación técnica
                         precisa, coordinada y lista para construir.
+
                     </p>
 
                 </div>
+
 
 
                 <div>
@@ -1520,6 +1700,7 @@
                 </div>
 
 
+
                 <div>
 
                     <h4>
@@ -1528,15 +1709,30 @@
 
                     <ul>
 
-                        <li>Arquitectura</li>
-                        <li>Estructuras</li>
-                        <li>Instalaciones</li>
-                        <li>Reformas</li>
-                        <li>Levantamientos BIM</li>
+                        <li>
+                            Arquitectura
+                        </li>
+
+                        <li>
+                            Estructuras
+                        </li>
+
+                        <li>
+                            Instalaciones
+                        </li>
+
+                        <li>
+                            Reformas
+                        </li>
+
+                        <li>
+                            Levantamientos BIM
+                        </li>
 
                     </ul>
 
                 </div>
+
 
 
                 <div>
@@ -1564,6 +1760,7 @@
                 </div>
 
 
+
                 <div>
 
                     <h4>
@@ -1572,11 +1769,17 @@
 
                     <div class="social">
 
-                        <a href="#" aria-label="LinkedIn">
+                        <a
+                            href="#"
+                            aria-label="LinkedIn"
+                        >
                             in
                         </a>
 
-                        <a href="#" aria-label="Instagram">
+                        <a
+                            href="#"
+                            aria-label="Instagram"
+                        >
                             ◎
                         </a>
 
@@ -1593,6 +1796,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="copyright">
@@ -1624,7 +1828,11 @@
         rel="noopener"
         aria-label="Contactar por WhatsApp"
     >
-        <span>W</span>
+
+        <span>
+            W
+        </span>
+
     </a>
 
 
