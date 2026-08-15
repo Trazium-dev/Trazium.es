@@ -82,8 +82,6 @@ header{
     gap:50px;
 }
 
-/* LOGO PRINCIPAL */
-
 .header-logo{
     width:285px;
     height:auto;
@@ -193,19 +191,17 @@ header{
     background:var(--blue);
 }
 
-/* TITULAR HERO MÁS PEQUEÑO */
+/* HERO MÁS PEQUEÑO */
 
 .hero h1{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(52px,4.8vw,82px);
-    line-height:.88;
+    font-size:clamp(52px,4.2vw,76px);
+    line-height:.91;
     font-weight:900;
     text-transform:uppercase;
     letter-spacing:-.025em;
-    color:var(--white);
-    text-shadow:
-        0 2px 4px rgba(0,0,0,.8),
-        0 0 15px rgba(0,0,0,.25);
+    color:#111c29;
+    text-shadow:none;
 }
 
 .hero h1 .blue{
@@ -386,6 +382,65 @@ header{
 
 
 /* =========================================================
+   MODAL SERVICIOS
+========================================================= */
+
+.service-detail{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:4000;
+    background:rgba(4,14,25,.78);
+    padding:30px;
+    overflow-y:auto;
+}
+
+.service-detail.active{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.service-detail-box{
+    position:relative;
+    width:min(900px,100%);
+    max-height:88vh;
+    overflow:auto;
+    background:#fff;
+    padding:55px;
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.service-detail-close{
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:#f3f6fa;
+    cursor:pointer;
+    font-size:25px;
+}
+
+.service-detail-title{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:62px;
+    line-height:.9;
+    text-transform:uppercase;
+    margin-bottom:30px;
+}
+
+.service-detail-content{
+    white-space:pre-wrap;
+    color:#526174;
+    font-size:15px;
+    line-height:1.8;
+}
+
+
+/* =========================================================
    MODELO AL PLANO
 ========================================================= */
 
@@ -401,14 +456,7 @@ header{
     align-items:start;
 }
 
-.workflow-intro .determinant{
-    color:var(--blue);
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    margin-bottom:22px;
-}
+/* ELIMINADO EL PEQUEÑO "DEL MODELO A LA OBRA" */
 
 .workflow-intro h2{
     font-family:'Barlow Condensed',sans-serif;
@@ -492,11 +540,9 @@ header{
     margin-bottom:30px;
 }
 
-/* PROYECTOS MÁS PEQUEÑO */
-
 .projects-header h2{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:55px;
+    font-size:70px;
     line-height:.9;
     text-transform:uppercase;
     font-weight:900;
@@ -530,9 +576,16 @@ header{
 .project-info h3{
     font-family:'Barlow Condensed',sans-serif;
     font-size:60px;
-    line-height:.98;
+    line-height:.85;
     text-transform:uppercase;
     font-weight:900;
+}
+
+/* MÁS ESPACIO ENTRE VIVIENDA Y UNIFAMILIAR */
+
+.project-info h3 span{
+    display:block;
+    margin-bottom:8px;
 }
 
 .project-meta{
@@ -549,6 +602,11 @@ header{
     color:#111c29;
 }
 
+.project-button{
+    margin-top:35px;
+    width:100%;
+}
+
 .project-image{
     min-height:520px;
     background:#eef3f8;
@@ -562,15 +620,9 @@ header{
     object-position:center;
 }
 
-.project-button{
-    margin-top:35px;
-    width:100%;
-}
-
 
 /* =========================================================
    PROJECT DETAIL
-   OCULTO HASTA HACER CLICK
 ========================================================= */
 
 .project-detail{
@@ -666,7 +718,7 @@ header{
 .contact{
     background:var(--navy);
     color:#fff;
-    padding:85px 0;
+    padding:75px 0;
 }
 
 .contact-grid{
@@ -683,19 +735,12 @@ header{
     object-fit:contain;
 }
 
-.contact-title .small{
-    color:#4f91ff;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    margin-bottom:16px;
-}
+/* TEXTO DE CONTACTO MÁS PEQUEÑO */
 
 .contact-title h2{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:65px;
-    line-height:.9;
+    font-size:48px;
+    line-height:.92;
     text-transform:uppercase;
     font-weight:900;
     color:#fff;
@@ -704,6 +749,8 @@ header{
 .contact-title h2 .blue{
     color:var(--blue);
 }
+
+/* ICONOS DE CONTACTO */
 
 .contact-buttons{
     display:flex;
@@ -730,8 +777,8 @@ header{
 }
 
 .contact-icon{
-    width:40px;
-    height:40px;
+    width:46px;
+    height:46px;
     flex-shrink:0;
     display:flex;
     align-items:center;
@@ -739,8 +786,11 @@ header{
     border-radius:50%;
     background:#fff;
     color:var(--blue);
-    font-weight:900;
-    font-size:18px;
+}
+
+.contact-icon svg{
+    width:24px;
+    height:24px;
 }
 
 .contact-pill-text span{
@@ -796,30 +846,30 @@ footer{
     color:var(--blue);
 }
 
+/* REDES SOCIALES */
+
 .socials{
     display:flex;
-    gap:14px;
+    gap:18px;
+    align-items:center;
 }
 
-/* LINKEDIN E INSTAGRAM: CÍRCULOS */
-
 .social-icon{
-    width:52px;
-    height:52px;
-    min-width:52px;
-    min-height:52px;
-    padding:0 !important;
+    width:64px;
+    height:64px;
     border:1px solid #d6dee7;
-    border-radius:50% !important;
+    border-radius:50%;
     display:flex !important;
     align-items:center;
     justify-content:center;
     color:#111c29 !important;
-    font-size:16px !important;
-    font-weight:900;
     margin:0 !important;
-    text-align:center;
     transition:.25s ease;
+}
+
+.social-icon svg{
+    width:27px;
+    height:27px;
 }
 
 .social-icon:hover{
@@ -921,8 +971,6 @@ footer{
         width:calc(100% - 30px);
     }
 
-    /* LOGO ARRIBA, GRANDE */
-
     .header-inner{
         min-height:auto;
         padding:20px 0 0;
@@ -936,8 +984,6 @@ footer{
         max-width:85%;
         height:auto;
     }
-
-    /* BARRA DE NAVEGACIÓN DEBAJO DEL LOGO */
 
     .main-nav{
         width:100%;
@@ -961,6 +1007,7 @@ footer{
     .header-cta{
         display:none;
     }
+
 
     /* HERO */
 
@@ -989,8 +1036,8 @@ footer{
     }
 
     .hero h1{
-        font-size:50px;
-        line-height:.89;
+        font-size:48px;
+        line-height:.91;
     }
 
     .hero-description{
@@ -1006,6 +1053,7 @@ footer{
     .pill-button{
         width:100%;
     }
+
 
     /* SERVICES */
 
@@ -1035,6 +1083,19 @@ footer{
         height:220px;
     }
 
+    .service-detail{
+        padding:12px;
+    }
+
+    .service-detail-box{
+        padding:45px 25px;
+    }
+
+    .service-detail-title{
+        font-size:50px;
+    }
+
+
     /* WORKFLOW */
 
     .workflow{
@@ -1053,6 +1114,7 @@ footer{
         height:260px;
     }
 
+
     /* PROJECT */
 
     .projects{
@@ -1060,7 +1122,7 @@ footer{
     }
 
     .projects-header h2{
-        font-size:48px;
+        font-size:60px;
     }
 
     .project-feature{
@@ -1079,6 +1141,7 @@ footer{
     .project-image img{
         min-height:380px;
     }
+
 
     /* DETAIL */
 
@@ -1104,10 +1167,11 @@ footer{
         font-size:58px;
     }
 
+
     /* CONTACT */
 
     .contact{
-        padding:65px 0;
+        padding:60px 0;
     }
 
     .contact-grid{
@@ -1123,12 +1187,13 @@ footer{
     }
 
     .contact-title h2{
-        font-size:58px;
+        font-size:42px;
     }
 
     .contact-buttons{
         grid-column:auto;
     }
+
 
     /* FOOTER */
 
@@ -1167,7 +1232,7 @@ footer{
     }
 
     .hero h1{
-        font-size:44px;
+        font-size:43px;
     }
 
     .workflow-intro h2{
@@ -1179,7 +1244,7 @@ footer{
     }
 
     .contact-title h2{
-        font-size:50px;
+        font-size:38px;
     }
 
 }
@@ -1210,23 +1275,31 @@ a:focus-visible{
 
     <div class="container header-inner">
 
-        <!-- LOGO PRINCIPAL -->
-
         <a href="#inicio" aria-label="TRAZIUM inicio">
+
             <img
                 src="Logo Horizontal.png"
                 alt="TRAZIUM"
                 class="header-logo"
             >
+
         </a>
 
+
         <nav class="main-nav">
+
             <a href="#inicio">Inicio</a>
+
             <a href="#servicios">Servicios</a>
+
             <a href="#proceso">Proceso</a>
+
             <a href="#proyectos">Proyectos</a>
+
             <a href="#contacto">Contacto</a>
+
         </nav>
+
 
         <a
             class="header-cta"
@@ -1258,18 +1331,32 @@ a:focus-visible{
                 Modelado · Planimetría · Reformas
             </div>
 
+
             <h1>
+
                 MODELAMOS<br>
-                <span class="blue">PRECISIÓN.</span><br>
+
+                <span class="blue">
+                    PRECISIÓN.
+                </span><br>
+
                 CONSTRUIMOS<br>
-                <span class="blue">CONFIANZA.</span>
+
+                <span class="blue">
+                    CONFIANZA.
+                </span>
+
             </h1>
 
+
             <p class="hero-description">
+
                 Modelado BIM y documentación técnica para arquitectura,
                 estructuras y reformas. Información clara, coordinada
                 y lista para construir.
+
             </p>
+
 
             <div class="hero-buttons">
 
@@ -1299,6 +1386,7 @@ a:focus-visible{
     <div class="container">
 
         <div class="services-grid">
+
 
             <div class="services-intro">
 
@@ -1332,11 +1420,20 @@ a:focus-visible{
 
             <article class="service-card">
 
-                <div class="service-number">01</div>
+                <div class="service-number">
+                    01
+                </div>
 
                 <h3>
-                    <span class="black">ARQUITECTURA</span>
-                    <span class="blue"> BIM</span>
+
+                    <span class="black">
+                        ARQUITECTURA
+                    </span>
+
+                    <span class="blue">
+                        BIM
+                    </span>
+
                 </h3>
 
                 <img
@@ -1350,9 +1447,12 @@ a:focus-visible{
                     coordinada para proyectos claros y precisos.
                 </p>
 
-                <a href="Arquitectura" class="service-link">
+                <button
+                    class="service-link"
+                    onclick="openService('Arquitectura','Arquitectura')"
+                >
                     Explorar
-                </a>
+                </button>
 
             </article>
 
@@ -1361,11 +1461,20 @@ a:focus-visible{
 
             <article class="service-card">
 
-                <div class="service-number">02</div>
+                <div class="service-number">
+                    02
+                </div>
 
                 <h3>
-                    <span class="black">ESTRUCTURAS</span>
-                    <span class="blue"> BIM</span>
+
+                    <span class="black">
+                        ESTRUCTURAS
+                    </span>
+
+                    <span class="blue">
+                        BIM
+                    </span>
+
                 </h3>
 
                 <img
@@ -1379,9 +1488,12 @@ a:focus-visible{
                     para facilitar la ejecución.
                 </p>
 
-                <a href="Estructuras" class="service-link">
+                <button
+                    class="service-link"
+                    onclick="openService('Estructuras','Estructuras')"
+                >
                     Explorar
-                </a>
+                </button>
 
             </article>
 
@@ -1390,15 +1502,24 @@ a:focus-visible{
 
             <article class="service-card">
 
-                <div class="service-number">03</div>
+                <div class="service-number">
+                    03
+                </div>
 
                 <h3>
-                    <span class="black">INSTALACIONES</span>
-                    <span class="blue"> MEP</span>
+
+                    <span class="black">
+                        INSTALACIONES
+                    </span>
+
+                    <span class="blue">
+                        MEP
+                    </span>
+
                 </h3>
 
                 <img
-                    src="Instal. edificio residencial.png"
+                    src="Instalaciones.jpeg"
                     alt="Instalaciones MEP"
                     class="service-image"
                 >
@@ -1408,9 +1529,12 @@ a:focus-visible{
                     interferencias y mejorar la ejecución.
                 </p>
 
-                <a href="Instalaciones" class="service-link">
+                <button
+                    class="service-link"
+                    onclick="openService('Instalaciones','Instalaciones')"
+                >
                     Explorar
-                </a>
+                </button>
 
             </article>
 
@@ -1419,11 +1543,20 @@ a:focus-visible{
 
             <article class="service-card">
 
-                <div class="service-number">04</div>
+                <div class="service-number">
+                    04
+                </div>
 
                 <h3>
-                    <span class="black">REFORMAS &amp;</span>
-                    <span class="black"> REHABILITACIÓN</span>
+
+                    <span class="black">
+                        REFORMAS &amp;
+                    </span>
+
+                    <span class="black">
+                        REHABILITACIÓN
+                    </span>
+
                 </h3>
 
                 <img
@@ -1437,9 +1570,12 @@ a:focus-visible{
                     para reformas y rehabilitaciones.
                 </p>
 
-                <a href="Reformas" class="service-link">
+                <button
+                    class="service-link"
+                    onclick="openService('Reformas','Reformas')"
+                >
                     Explorar
-                </a>
+                </button>
 
             </article>
 
@@ -1458,15 +1594,19 @@ a:focus-visible{
 
     <div class="container workflow-grid">
 
+
         <div class="workflow-intro">
 
-            <div class="determinant">
-                DEL MODELO A LA OBRA
-            </div>
-
             <h2>
-                <span>DEL MODELO</span>
-                <span class="blue">A LA OBRA</span>
+
+                <span>
+                    DEL MODELO
+                </span>
+
+                <span class="blue">
+                    A LA OBRA
+                </span>
+
             </h2>
 
             <p>
@@ -1580,16 +1720,26 @@ a:focus-visible{
 
         <div class="project-feature">
 
+
             <div class="project-info">
 
                 <div class="project-label">
                     Proyecto destacado
                 </div>
 
+
                 <h3>
-                    Vivienda<br>
-                    Unifamiliar
+
+                    <span>
+                        VIVIENDA
+                    </span>
+
+                    <span>
+                        UNIFAMILIAR
+                    </span>
+
                 </h3>
+
 
                 <div class="project-meta">
 
@@ -1606,6 +1756,7 @@ a:focus-visible{
                     </p>
 
                 </div>
+
 
                 <button
                     class="pill-button project-button"
@@ -1637,7 +1788,6 @@ a:focus-visible{
 
 <!-- =====================================================
      DETALLE DEL PROYECTO
-     OCULTO HASTA CLICK
 ===================================================== -->
 
 <div
@@ -1656,7 +1806,9 @@ a:focus-visible{
             ×
         </button>
 
+
         <div class="project-detail-grid">
+
 
             <div class="project-detail-image">
 
@@ -1667,16 +1819,19 @@ a:focus-visible{
 
             </div>
 
+
             <div class="project-detail-content">
 
                 <div class="label">
                     Proyecto destacado
                 </div>
 
+
                 <h2>
                     Vivienda<br>
                     Unifamiliar
                 </h2>
+
 
                 <p>
                     Proyecto desarrollado mediante metodología BIM,
@@ -1684,10 +1839,12 @@ a:focus-visible{
                     para obtener una información clara y precisa.
                 </p>
 
+
                 <p>
                     El modelo permite visualizar, documentar y coordinar
                     las diferentes fases del proyecto antes de su ejecución.
                 </p>
+
 
                 <p>
                     <strong>Tipo:</strong> Modelado BIM
@@ -1703,6 +1860,45 @@ a:focus-visible{
 
             </div>
 
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL DE SERVICIOS
+===================================================== -->
+
+<div
+    class="service-detail"
+    id="serviceDetail"
+    onclick="closeServiceOutside(event)"
+>
+
+    <div class="service-detail-box">
+
+        <button
+            class="service-detail-close"
+            onclick="closeService()"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+
+        <h2
+            class="service-detail-title"
+            id="serviceDetailTitle"
+        >
+        </h2>
+
+
+        <div
+            class="service-detail-content"
+            id="serviceDetailContent"
+        >
         </div>
 
     </div>
@@ -1736,16 +1932,16 @@ a:focus-visible{
 
         <div class="contact-title">
 
-            <div class="small">
-                Hablemos
-            </div>
-
             <h2>
+
                 ¿TIENE UN<br>
+
                 PROYECTO?<br>
+
                 <span class="blue">
                     HABLEMOS.
                 </span>
+
             </h2>
 
         </div>
@@ -1755,6 +1951,9 @@ a:focus-visible{
 
         <div class="contact-buttons">
 
+
+            <!-- WHATSAPP -->
+
             <a
                 class="contact-pill"
                 href="https://wa.me/34679617787?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto"
@@ -1763,12 +1962,30 @@ a:focus-visible{
             >
 
                 <div class="contact-icon">
-                    <span>◉</span>
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                        <path d="M21 11.5a8.38 8.38 0 0 1-9 9 8.5 8.5 0 0 1-3.8-.9L3 21l1.4-4.9A8.5 8.5 0 1 1 21 11.5z"/>
+
+                        <path d="M8.5 8.5c.3-.7.6-.7 1-.7.2 0 .4 0 .6.4l.7 1.5c.1.3.1.5-.1.7l-.5.6c-.2.2-.1.5 0 .7.5.9 1.3 1.6 2.2 2.1.3.2.5.2.7-.1l.6-.7c.2-.2.4-.3.7-.1l1.4.7c.3.2.4.3.3.7-.1.5-.4 1.1-.9 1.3-.5.2-1.1.3-1.8.1-1-.3-2.1-.9-3-1.7-.8-.7-1.5-1.6-2-2.5-.5-.9-.7-1.7-.5-2.5.1-.5.4-.9.6-1.2z"/>
+
+                    </svg>
+
                 </div>
+
 
                 <div class="contact-pill-text">
 
-                    <span>WhatsApp</span>
+                    <span>
+                        WhatsApp
+                    </span>
 
                     <strong>
                         +34 679 617 787
@@ -1779,18 +1996,44 @@ a:focus-visible{
             </a>
 
 
+            <!-- EMAIL -->
+
             <a
                 class="contact-pill"
                 href="mailto:comercial.trazium@outlook.com"
             >
 
                 <div class="contact-icon">
-                    ✉️
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                        <rect
+                            x="3"
+                            y="5"
+                            width="18"
+                            height="14"
+                            rx="2"
+                        />
+
+                        <path d="m3 7 9 6 9-6"/>
+
+                    </svg>
+
                 </div>
+
 
                 <div class="contact-pill-text">
 
-                    <span>Email</span>
+                    <span>
+                        Email
+                    </span>
 
                     <strong>
                         comercial.trazium@outlook.com
@@ -1884,9 +2127,11 @@ a:focus-visible{
                     Síguenos
                 </h3>
 
+
                 <div class="socials">
 
-                    <!-- Sustituye los # por tus perfiles reales -->
+
+                    <!-- LINKEDIN -->
 
                     <a
                         href="#"
@@ -1894,8 +2139,20 @@ a:focus-visible{
                         aria-label="LinkedIn"
                         title="LinkedIn"
                     >
-                        in
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+
+                            <path d="M6.5 8.5H3V21h3.5V8.5ZM4.75 3A2.05 2.05 0 1 0 4.75 7.1 2.05 2.05 0 0 0 4.75 3ZM21 13.8c0-3.75-2-5.5-4.7-5.5-2.15 0-3.1 1.18-3.65 2v-1.8H9.15V21h3.5v-6.2c0-1.64.3-3.23 2.35-3.23 2.02 0 2.05 1.88 2.05 3.34V21h3.5l.45-7.2Z"/>
+
+                        </svg>
+
                     </a>
+
+
+                    <!-- INSTAGRAM -->
 
                     <a
                         href="#"
@@ -1903,7 +2160,38 @@ a:focus-visible{
                         aria-label="Instagram"
                         title="Instagram"
                     >
-                        ◎
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        >
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="5"
+                            />
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="4"
+                            />
+
+                            <circle
+                                cx="17.5"
+                                cy="6.5"
+                                r="1"
+                                fill="currentColor"
+                                stroke="none"
+                            />
+
+                        </svg>
+
                     </a>
 
                 </div>
@@ -1931,6 +2219,7 @@ a:focus-visible{
 
 
 <script>
+
 
 /* =====================================================
    PROYECTO
@@ -1961,25 +2250,110 @@ function closeProject(){
 function closeProjectOutside(event){
 
     if(event.target.id === "projectDetail"){
+
         closeProject();
+
     }
 
 }
 
 
-/* ESC PARA CERRAR */
+/* =====================================================
+   SERVICIOS
+   CARGA LOS ARCHIVOS:
+   Arquitectura
+   Estructuras
+   Instalaciones
+   Reformas
+===================================================== */
+
+async function openService(fileName, title){
+
+    const modal = document.getElementById("serviceDetail");
+
+    const titleElement =
+        document.getElementById("serviceDetailTitle");
+
+    const contentElement =
+        document.getElementById("serviceDetailContent");
+
+
+    titleElement.textContent = title;
+
+    contentElement.textContent = "Cargando información...";
+
+    modal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+
+    try{
+
+        const response = await fetch(fileName);
+
+        if(!response.ok){
+
+            throw new Error("No se pudo cargar el archivo.");
+
+        }
+
+        const text = await response.text();
+
+        contentElement.textContent = text;
+
+    }
+
+    catch(error){
+
+        contentElement.textContent =
+            "No se ha podido cargar la información de este servicio.";
+
+    }
+
+}
+
+
+function closeService(){
+
+    const modal = document.getElementById("serviceDetail");
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+function closeServiceOutside(event){
+
+    if(event.target.id === "serviceDetail"){
+
+        closeService();
+
+    }
+
+}
+
+
+/* =====================================================
+   ESC PARA CERRAR MODALES
+===================================================== */
 
 document.addEventListener("keydown", function(event){
 
     if(event.key === "Escape"){
+
         closeProject();
+
+        closeService();
+
     }
 
 });
 
 
 /* =====================================================
-   CERRAR MENU / NAVEGACIÓN SUAVE
+   NAVEGACIÓN SUAVE
 ===================================================== */
 
 document.querySelectorAll('a[href^="#"]').forEach(function(link){
@@ -1995,8 +2369,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(link){
             event.preventDefault();
 
             target.scrollIntoView({
+
                 behavior:"smooth",
+
                 block:"start"
+
             });
 
         }
@@ -2004,6 +2381,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(link){
     });
 
 });
+
 
 </script>
 
